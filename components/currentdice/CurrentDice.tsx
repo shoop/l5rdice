@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 interface Props {
     amountOfRingDice: number;
@@ -8,9 +8,15 @@ interface Props {
 
 export class CurrentDice extends Component<Props> {
     render() {
+        const ringDice: Element[] = Array.from({ length: this.props.amountOfRingDice })
+            .map((v, i) => <Image key={`ring-${i}`} style={styles.blankdie} source={require('../../images/ic_ringdie_blank.png')} />);
+        const skillDice: Element[] = Array.from({ length: this.props.amountOfSkillDice })
+            .map((v, i) => <Image key={`skill-${i}`} style={styles.blankdie} source={require('../../images/ic_skilldie_blank.png')} />);
+
         return (
             <View style={styles.currentdice}>
-                <Text>{this.props.amountOfRingDice} ring dice, {this.props.amountOfSkillDice} skill dice</Text>
+                {ringDice}
+                {skillDice}
             </View>
         );
     }
@@ -19,5 +25,10 @@ export class CurrentDice extends Component<Props> {
 const styles = StyleSheet.create({
     currentdice: {
         flex: 1,
+        flexDirection: 'row',
     },
+    blankdie: {
+        height: 30,
+        width: 30,
+    }
 });
