@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { SkillDie } from '../skilldie/SkillDie';
+import { RingDie } from '../ringdie/RingDie';
+
 interface Props {
     ringDiceResult: number[];
     skillDiceResult: number[];
@@ -8,14 +11,19 @@ interface Props {
 
 export class ResultArea extends Component<Props> {
     render() {
-        const ringDice: string = this.props.ringDiceResult.length > 0 ?
-            `Ring dice: ${this.props.ringDiceResult.join(', ')}` : 'No ring dice';
-        const skillDice: string = this.props.skillDiceResult.length > 0 ?
-            `Skill dice: ${this.props.skillDiceResult.join(', ')}` : 'No skill dice';
-
+        const ringDiceImgs: Element[] = this.props.ringDiceResult.map((result, i) => {
+                return <RingDie key={`ring-${i}`} face={result} />
+            });
+        const skillDiceImgs: Element[] = this.props.skillDiceResult.map((result, i) => {
+                return <SkillDie key={`skill-${i}`} face={result} />
+            });
+    
         return (
             <View style={styles.resultarea}>
-                <Text>{ringDice}, {skillDice}</Text>
+                <View style={styles.diceresults}>
+                    {ringDiceImgs}
+                    {skillDiceImgs}
+                </View>
             </View>
         );
     }
@@ -24,5 +32,10 @@ export class ResultArea extends Component<Props> {
 const styles = StyleSheet.create({
     resultarea: {
         flex: 5,
+    },
+    diceresults: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     },
 });
