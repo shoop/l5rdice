@@ -8,9 +8,14 @@ interface Props {
 
 export class ResultArea extends Component<Props> {
     render() {
+        const ringDice: string = this.props.ringDiceResult.length > 0 ?
+            `Ring dice: ${this.props.ringDiceResult.join(', ')}` : 'No ring dice';
+        const skillDice: string = this.props.skillDiceResult.length > 0 ?
+            `Skill dice: ${this.props.skillDiceResult.join(', ')}` : 'No skill dice';
+
         return (
             <View style={styles.resultarea}>
-                <Text>Ring dice: {this.props.ringDiceResult.join(', ')}, Skill dice: {this.props.skillDiceResult.join(', ')}</Text>
+                <Text>{ringDice}, {skillDice}</Text>
             </View>
         );
     }
