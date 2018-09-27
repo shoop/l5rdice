@@ -1,15 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * 
- * Generated with the TypeScript template
- * https://github.com/emin93/react-native-template-typescript
- * 
- * @format
- */
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+
+import { DicePicker } from './components/dicepicker/DicePicker';
+import { RollButton } from './components/rollbutton/RollButton';
+import { ResultArea } from './components/resultarea/ResultArea';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -23,9 +17,10 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>L5R dice app</Text>
-        <Text style={styles.instructions}>Add one D12</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.title}>L5R dice app</Text>
+        <DicePicker />
+        <RollButton />
+        <ResultArea />
       </View>
     );
   }
@@ -34,18 +29,14 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
   },
-  welcome: {
+  title: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    fontWeight: 'bold',
   },
 });
