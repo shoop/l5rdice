@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button, Alert } from 'react-native';
 
-interface Props {}
+interface Props {
+    amountOfRingDice: number;
+    amountOfSkillDice: number;
+    rollDice: () => void;
+}
+
 export class RollButton extends Component<Props> {
+    constructor(props: Props)
+    {
+        super(props);
+        this._onRoll = this._onRoll.bind(this);
+    }
+    
     _onRoll() {
-        Alert.alert('Roll!');
+        this.props.rollDice();
     }
 
     render() {
