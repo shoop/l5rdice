@@ -4,6 +4,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import { DicePicker } from './components/dicepicker/DicePicker';
 import { RollButton } from './components/rollbutton/RollButton';
 import { ResultArea } from './components/resultarea/ResultArea';
+import { CurrentDice } from './components/currentdice/CurrentDice';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,6 +20,7 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <Text style={styles.title}>L5R dice app</Text>
         <DicePicker />
+        <CurrentDice />
         <RollButton />
         <ResultArea />
       </View>

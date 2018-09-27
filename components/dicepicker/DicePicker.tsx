@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     skilldie: {
         flex: 1,
         width: 50,
+        height: 100,
     },
     skilldiebutton: {
     },
@@ -58,5 +59,7 @@ const styles = StyleSheet.create({
         width: 50,
     },
     ringdiebutton: {
+    },
+    currentdice: {
     },
 });
